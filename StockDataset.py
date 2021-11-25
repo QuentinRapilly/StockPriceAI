@@ -29,8 +29,6 @@ class StockPriceDataset(Dataset):
         return len(self.data)
 
     def __getitem__(self, index) -> Union[torch.Tensor, float]:
-        if torch.is_tensor(index):
-            index.tolist()
         # Load one sample more than nb_samples for normalizing, transform
         sample = self.data['Close'][index:index+self.nb_samples+2]
         sample = torch.tensor(sample)
@@ -38,7 +36,7 @@ class StockPriceDataset(Dataset):
             sample = self.transform(sample)[1:]
         else:
             sample = sample[1:]
-        label = float(sample[-1]) # label is the last elem of sample
+        label = sample[-1] # label is the last elem of sample
         sample = sample[:-1] # removes label from sample
         return sample, label
 
@@ -59,6 +57,6 @@ if __name__ == "__main__":
     dataset = StockPriceDataset(START_DATE, END_DATE, INTERVAL, nb_samples,
                                 transform=normalize_by_last_unknown_price)
 
-    dataloader = DataLoader(dataset, batch_size=64, shuffle=True)
+    dataloader = DataLoader(dataset, batch_size=64)
     for i_batch, batch in enumerate(dataloader):
         print("i_batch = {}, batch = {}".format(i_batch, batch))

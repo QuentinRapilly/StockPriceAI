@@ -1,4 +1,4 @@
-from torch.nn import LSTM,Module,Dropout,ModuleList
+from torch.nn import LSTM, Module, Dropout, ModuleList
 
 class StockAI(Module):
      
@@ -11,10 +11,10 @@ class StockAI(Module):
         self.dropout_list = ModuleList([Dropout() for _ in range(self.num_layers)])
 
     
-    def foward(self,x):
+    def forward(self,x):
         y = x
         for i in range(self.num_layers):
             y = self.lstm_list[i](x)
             y = self.dropout_list[i](x)
-        
         return y
+    
