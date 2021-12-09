@@ -8,7 +8,7 @@ class StockAI(Module):
         self.lstm_size = lstm_size
         self.num_layers = num_layers
         self.lstm_list = ModuleList([LSTM(self.input_size, self.lstm_size) for _ in range(self.num_layers)])
-        self.dropout_list = ModuleList([Dropout() for _ in range(self.num_layers)])
+        self.dropout_list = ModuleList([Dropout(keep_prob) for _ in range(self.num_layers)])
 
     
     def forward(self,x):
