@@ -28,9 +28,12 @@ class StockPriceDataset(Dataset):
     def __len__(self) -> int:
         return len(self.data)
 
-    def __getitem__(self, index) -> Union[torch.Tensor, float]:
+    def __getitem__(self, index: int, overlapping: bool=True) -> Union[torch.Tensor, float]:
         # Load one sample more than nb_samples for normalizing, transform
-        sample = self.data['Close'][index:index+self.nb_samples+2]
+        if overlapping:
+            sample = self.data['Close'][index:index+self.nb_samples+2]
+        else:
+            sample = self.data['Close'][index*self.nb_samples:(index+1)*self.nb_samples+2]
         sample = torch.tensor(sample)
         if self.transform:
             sample = self.transform(sample)[1:]
