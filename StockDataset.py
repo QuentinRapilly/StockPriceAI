@@ -43,6 +43,10 @@ class StockPriceDataset(Dataset):
         sample = sample[:-1] # removes label from sample
         return sample, label
 
+    def get_normalization_value(self, index):
+        # Retrieve the normalization value from the last sample
+        return self.data['Close'][index]
+
 def normalize_by_last_unknown_price(sample: torch.Tensor) -> torch.Tensor:
     """Divides the whole stock price sample by the last unknown price w_{p*t-1}"""
     last_price = sample[0] # w_{pt-1}

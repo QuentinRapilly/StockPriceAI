@@ -17,10 +17,9 @@ class StockAIConfig():
         },
 
         "learning":{
-            "num_steps": 30,
             "init_lr": 1e-03,
             "lr_decay": 0.99,
             "init_epoch": 5,
-            "max_epoch": 30
+            "max_epoch": 10
         }   
     }
