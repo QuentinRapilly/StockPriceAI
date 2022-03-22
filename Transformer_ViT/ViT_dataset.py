@@ -1,8 +1,11 @@
 from typing import Tuple
 import numpy as np
 import os
+import torch
 
 from torch.utils.data import Dataset
+import pandas as pd
+import yfinance as yf
 
 class ViTDataset(Dataset):
     def __init__(self, start_date: str="jj-mm-aaaa", end_date: str="jj-mm-aaaa", 
