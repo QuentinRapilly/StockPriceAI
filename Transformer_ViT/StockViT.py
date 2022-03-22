@@ -7,8 +7,6 @@ from einops.layers.torch import Rearrange
 def pair(t):
     return t if isinstance(t, tuple) else (t, t)
 
-    
-
 class PreNorm(nn.Module):
     def __init__(self, dim, fn):
         super().__init__()
@@ -77,7 +75,7 @@ class Transformer(nn.Module):
 
 
 class StockViT(nn.Module):
-    def __init__(self, *, period_size, patch_size, nb_pred, dim, depth, heads, mlp_dim, pool = 'cls', channels = 3, dim_head = 64, dropout = 0., emb_dropout = 0.):
+    def __init__(self, period_size, patch_size, nb_pred, dim, depth, heads, mlp_dim, pool = 'cls', channels = 3, dim_head = 64, dropout = 0., emb_dropout = 0.):
         super().__init__()
 
         assert period_size % patch_size == 0, 'Period dimensions must be divisible by the patch size.'
