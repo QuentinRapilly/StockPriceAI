@@ -1,13 +1,32 @@
 # StockPriceAI
 We aim at predicting stock prices thanks to AI methods and more particularly reinforcement learning.
 
-# RNN approach
+## RNN approach
 
-stock_price_prediction_1.py : contient le code permettant de réaliser l'apprentissage du modèle StockAI avec RNN.
+The code is located in the directory **RNN_LSTM/**
 
---> RNN with LSTM
---> RNN with transformers
+- **stock_price_prediction_RNN.ipynb**: contains the notebook that allows the LTSM to learn on S&P500 data, with 2 differents data preprocessing approaches. Everything is described in the notebook : one just have to run the cells and follow experimentations.
 
-# RL approach
+## Transformers (ViT) approach
 
---> implement DQN
+The code is located in the directory **Transformer_ViT**.
+- **Config.py**: configuration for network, now coded in the notebook below
+- **Stock_ViT.py**: implementation of the network, now coded in the notebook below
+- **ViT_dataset.py**: pytorch custom dataset for data preprocesing, now coded in the notebook below
+- **ViT_for_stock_pred.ipynb**: contains the notebook that allows the transformer to learn on S&P500 data, in order to compare results with first RNN approach.
+
+
+## RL approach
+
+The code is located in the directory **RL/**
+
+2 differents approaches are explored:
+
+One first approach with strong hypotheses :
+- **Modelisation_RL _2.ipynb**
+- **Modelisation_RL.ipynb**
+- **Modelisation_RL_3 (1).ipynb**
+- **Modelisation_RL_Final.ipynb** : final file where the computation is operational and working.
+
+One refined model with theoretical financial sense :
+- **RL_DQNv2.ipynb** : build an environment and an agent capable of trading and choosing the quantity of stocks that it wants to buy or sell, in order to maximize the profits. The state-action function is estimated with a DQN. The modelization and the main results are explained in the notebook.
