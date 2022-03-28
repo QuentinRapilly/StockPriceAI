@@ -30,3 +30,15 @@ One first approach with strong hypotheses :
 
 One refined model with theoretical financial sense :
 - **RL_DQNv2.ipynb** : build an environment and an agent capable of trading and choosing the quantity of stocks that it wants to buy or sell, in order to maximize the profits. The state-action function is estimated with a DQN. The modelization and the main results are explained in the notebook.
+
+## Binance API
+
+A binance API pipeline was implemented in order to be able to deal with cryptocurrencies, and test our architectures on them.
+
+## Further works
+
+- Linking the binance API to test our architectures on crypto-currencies
+
+- Refine some hyper-parameters sets, to find the most optimal one, especially on ViT and RLv2
+
+- Comparison of the different models at several level (on S&500 data, on crypto-currencies, on trading simulations, starting with a capital and leading trades)
